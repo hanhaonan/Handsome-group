@@ -1,0 +1,23 @@
+后台首页（deskManager） Mkt＆Comp	 
+基础管理
+  |-客户管理（customerManager ）BCC/FCC(GRM 信用)
+  |-车辆管理（carManager）结果
+业务管理
+  |-汽车出租（rentCarManager）业务风险
+  |-出租单管理（rentManagere）财务绩效
+  |-汽车入库（checkCarManager）BRR4,5,6 
+  |-检查单管理（）
+系统管理
+  |-菜单管理（）
+  |-角色管理（roleManager）模型参数  
+  |-用户管理（UserManager）客户摘要
+  |-日志管理（logInfoMangaer）行业
+  |-系统公告（newsManage）财务数据
+  |-数据源监控（）
+统计分析
+  |-客户地区统计（customerAreaSexStat）资金使用
+  |-客户地区性别统计（customerAreaStat ）公司策略与管理
+  |-业务员年度销售额（operanameYearGrade）过渡到客户
+  |-公司年度月份销售额（companyYearGradeStat）附件
+
+
