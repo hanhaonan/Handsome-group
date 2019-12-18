@@ -512,7 +512,7 @@ CREATE TABLE `sys_role` (
 
 /*Data for the table `sys_role` */
 
-insert  into `sys_role`(`roleid`,`rolename`,`roledesc`,`available`) values (1,'超级管理员','拥有所有菜单权限',1),(2,'业务管理员','拥有所以业务菜单',1),(3,'系统管理员','管理系统',1),(4,'数据统计管理员','数据统计管理员',1);
+insert  into `sys_role`(`roleid`,`rolename`,`roledesc`,`available`) values (1,'超级管理员','拥菜单权限',1),(2,'业务管理员','拥有所以业务菜单',1),(3,'系统管理员','管理系统',1),(4,'数据统计管理员','数据统计管理员',1);
 
 /*Table structure for table `sys_role_menu` */
 
