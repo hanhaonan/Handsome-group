@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yeqifu.bus.mapper.CarMapper">
+  <resultMap id="BaseResultMap" type="com.yeqifu.bus.domain.Car">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="dsnum" jdbcType="VARCHAR" property="dsnum" />
+    <result column="pressure" jdbcType="VARCHAR" property="pressure" />
+    <result column="time" jdbcType="DATE" property="time" />
+    <result column="eventType" jdbcType="VARCHAR"
+            property="eventType" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="eventid" jdbcType="VARCHAR"
+            property="eventid" />
+    <result column="rssi" jdbcType="VARCHAR"
+            property="rssi" />
+    <result column="dump_energy" jdbcType="VARCHAR" property="dump_energy" />
+    <result column="owner" jdbcType="VARCHAR"
+            property="owner" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, dsnum, pressure, time, eventType, state, eventid, rssi,
+    dump_energy,
+    owner
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String"
+          resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bus_car
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from bus_car
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yeqifu.bus.domain.Car">
+    insert into bus_car (id, dsnum, pressure,
+    time, eventType, state,
+    eventid, rssi, dump_energy,
+    owner)
+    values (#{id,jdbcType=VARCHAR}, #{dsnum,jdbcType=VARCHAR},
+    #{pressure,jdbcType=VARCHAR},
+    #{time,jdbcType=DATE}, #{eventType,jdbcType=DOUBLE}, #{state,jdbcType=DOUBLE},
+    #{eventid,jdbcType=INTEGER}, #{rssi,jdbcType=VARCHAR},
+    #{dump_energy,jdbcType=VARCHAR},
+    #{owner,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective"
+          parameterType="com.yeqifu.bus.domain.Car">
+    insert into bus_car
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="dsnum != null">
+        dsnum,
+      </if>
+      <if test="pressure != null">
+        pressure,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+      <if test="eventType != null">
+        eventType,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="eventid != null">
+        eventid,
+      </if>
+      <if test="rssi != null">
+        rssi,
+      </if>
+      <if test="dump_energy != null">
+        dump_energy,
+      </if>
+      <if test="owner != null">
+        owner,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="dsnum != null">
+        #{dsnum,jdbcType=VARCHAR},
+      </if>
+      <if test="pressure != null">
+        #{pressure,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=DATE},
+      </if>
+      <if test="eventType != null">
+        #{eventType,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="eventid != null">
+        #{eventid,jdbcType=VARCHAR},
+      </if>
+      <if test="rssi != null">
+        #{rssi,jdbcType=VARCHAR},
+      </if>
+      <if test="dump_energy != null">
+        #{dump_energy,jdbcType=VARCHAR},
+      </if>
+      <if test="owner != null">
+        #{owner,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective"
+          parameterType="com.yeqifu.bus.domain.Car">
+    update bus_car
+    <set>
+      <if test="dsnum != null">
+        dsnum = #{dsnum,jdbcType=VARCHAR},
+      </if>
+      <if test="pressure != null">
+        pressure = #{pressure,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=DATE},
+      </if>
+      <if test="eventType != null">
+        eventType = #{eventType,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="eventid != null">
+        eventid = #{eventid,jdbcType=VARCHAR},
+      </if>
+      <if test="rssi != null">
+        rssi = #{rssi,jdbcType=VARCHAR},
+      </if>
+      <if test="dump_energy != null">
+        dump_energy = #{dump_energy,jdbcType=VARCHAR},
+      </if>
+      <if test="owner != null">
+        owner = #{owner,jdbcType=VARCAHR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey"
+          parameterType="com.yeqifu.bus.domain.Car">
+    update bus_car
+    set dsnum = #{dsnum,jdbcType=VARCHAR},
+    pressure = #{pressure,jdbcType=VARCHAR},
+    time = #{time,jdbcType=DATE},
+    eventType = #{eventType,jdbcType=VARCHAR},
+    state = #{statestate,jdbcType=VARCHAR},
+    eventid = #{eventid,jdbcType=VARCHAR},
+    rssi = #{rssi,jdbcType=VARCHAR},
+    dump_energy = #{dump_energy,jdbcType=VARCHAR},
+    owner = #{owner,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 查询 -->
+  <select id="queryAllCar" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from bus_car
+    <where>
+      <if test="id!=null and id!=''">
+        and id like concat("%",#{id},"%")
+      </if>
+      <if test="dsnum!=null and dsnum!=''">
+        and dsnum like concat("%",#{dsnum},"%")
+      </if>
+      <if test="pressure!=null and pressure!=''">
+        and pressure like concat("%",#{pressure},"%")
+      </if>
+      <if test="rssi!=null and rssi!=''">
+        and rssi like concat("%",#{rssi},"%")
+      </if>
+      <if test="eventid!=null">
+        and eventid=#{eventid}
+      </if>
+    </where>
+  </select>
+</mapper>

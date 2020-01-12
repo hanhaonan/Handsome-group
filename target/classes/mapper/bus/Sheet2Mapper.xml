@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yeqifu.bus.mapper.Sheet2Mapper">
+    <resultMap id="BaseResultMap" type="com.yeqifu.bus.domain.Sheet2">
+        <id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="device_code" jdbcType="VARCHAR" property="device_code" />
+        <result column="device_name" jdbcType="VARCHAR" property="device_name" />
+        <result column="area_id" jdbcType="VARCHAR" property="area_id" />
+        <result column="locate_x" jdbcType="VARCHAR" property="locate_x" />
+        <result column="locate_y" jdbcType="VARCHAR" property="locate_y" />
+        <result column="system_type" jdbcType="VARCHAR" property="system_type" />
+        <result column="state" jdbcType="VARCHAR" property="state" />
+        <result column="dsnum" jdbcType="VARCHAR" property="dsnum" />
+        <result column="pressure" jdbcType="VARCHAR" property="pressure" />
+        <result column="time" jdbcType="DATE" property="time" />
+        <result column="threshold" jdbcType="VARCHAR" property="threshold" />
+        <result column="upper_value" jdbcType="VARCHAR" property="upper_value" />
+        <result column="lower_value" jdbcType="VARCHAR" property="lower_value" />
+        <result column="device_ex_des" jdbcType="VARCHAR"
+                property="device_ex_des" />
+        <result column="comments" jdbcType="VARCHAR" property="comments" />
+        <result column="dump_energy" jdbcType="VARCHAR"
+                property="dump_energy" />
+        <result column="work_start_time" jdbcType="DATE" property="work_start_time" />
+        <result column="projectid" jdbcType="VARCHAR"
+                property="projectid" />
+
+        <result column="hydranttype" jdbcType="VARCHAR" property="hydranttype" />
+        <result column="buildingid" jdbcType="VARCHAR"
+                property="buildingid" />
+        <result column="waterType" jdbcType="VARCHAR"
+                property="waterType" />
+        <result column="pressureState" jdbcType="VARCHAR"
+                property="pressureState" />
+        <result column="rssi" jdbcType="VARCHAR"
+                property="rssi" />
+        <result column="version" jdbcType="VARCHAR"
+                property="version" />
+        <result column="belong" jdbcType="VARCHAR"
+                property="belong" />
+
+        <result column="updateTime" jdbcType="DATE" property="updateTime" />
+        <result column="work_stop_time" jdbcType="DATE" property="work_stop_time" />
+
+
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, device_code,device_name, area_id,locate_x ,locate_y,system_type,state,dsnum,pressure,time,
+    threshold,upper_value,lower_value,device_ex_des,comments,dump_energy,work_start_time,projectid,hydranttype,
+    buildingid,waterType,pressureState,rssi,updateTime,work_stop_time,version,belong
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String"
+            resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from bus_sheet2
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from bus_sheet2
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.yeqifu.bus.domain.Sheet2">
+    insert into bus_sheet2 (id, dsnum, pressure,
+    time, eventType, state,
+    eventid, rssi, dump_energy,
+    owner)
+    values (#{id,jdbcType=VARCHAR}, #{dsnum,jdbcType=VARCHAR},
+    #{pressure,jdbcType=VARCHAR},
+    #{time,jdbcType=DATE}, #{eventType,jdbcType=DOUBLE}, #{state,jdbcType=DOUBLE},
+    #{eventid,jdbcType=INTEGER}, #{rssi,jdbcType=VARCHAR},
+    #{dump_energy,jdbcType=VARCHAR},
+    #{owner,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective"
+            parameterType="com.yeqifu.bus.domain.Sheet2">
+        insert into bus_sheet2
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="dsnum != null">
+                dsnum,
+            </if>
+            <if test="pressure != null">
+                pressure,
+            </if>
+            <if test="time != null">
+                time,
+            </if>
+            <if test="eventType != null">
+                eventType,
+            </if>
+            <if test="state != null">
+                state,
+            </if>
+            <if test="eventid != null">
+                eventid,
+            </if>
+            <if test="rssi != null">
+                rssi,
+            </if>
+            <if test="dump_energy != null">
+                dump_energy,
+            </if>
+            <if test="owner != null">
+                owner,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="dsnum != null">
+                #{dsnum,jdbcType=VARCHAR},
+            </if>
+            <if test="pressure != null">
+                #{pressure,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null">
+                #{time,jdbcType=DATE},
+            </if>
+            <if test="eventType != null">
+                #{eventType,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null">
+                #{state,jdbcType=VARCHAR},
+            </if>
+            <if test="eventid != null">
+                #{eventid,jdbcType=VARCHAR},
+            </if>
+            <if test="rssi != null">
+                #{rssi,jdbcType=VARCHAR},
+            </if>
+            <if test="dump_energy != null">
+                #{dump_energy,jdbcType=VARCHAR},
+            </if>
+            <if test="owner != null">
+                #{owner,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective"
+            parameterType="com.yeqifu.bus.domain.Sheet2">
+        update bus_sheet2
+        <set>
+            <if test="dsnum != null">
+                dsnum = #{dsnum,jdbcType=VARCHAR},
+            </if>
+            <if test="pressure != null">
+                pressure = #{pressure,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null">
+                time = #{time,jdbcType=DATE},
+            </if>
+            <if test="eventType != null">
+                eventType = #{eventType,jdbcType=VARCHAR},
+            </if>
+            <if test="state != null">
+                state = #{state,jdbcType=VARCHAR},
+            </if>
+            <if test="eventid != null">
+                eventid = #{eventid,jdbcType=VARCHAR},
+            </if>
+            <if test="rssi != null">
+                rssi = #{rssi,jdbcType=VARCHAR},
+            </if>
+            <if test="dump_energy != null">
+                dump_energy = #{dump_energy,jdbcType=VARCHAR},
+            </if>
+            <if test="owner != null">
+                owner = #{owner,jdbcType=VARCAHR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey"
+            parameterType="com.yeqifu.bus.domain.Sheet2">
+    update bus_sheet2
+    set dsnum = #{dsnum,jdbcType=VARCHAR},
+    pressure = #{pressure,jdbcType=VARCHAR},
+    time = #{time,jdbcType=DATE},
+    eventType = #{eventType,jdbcType=VARCHAR},
+    state = #{statestate,jdbcType=VARCHAR},
+    eventid = #{eventid,jdbcType=VARCHAR},
+    rssi = #{rssi,jdbcType=VARCHAR},
+    dump_energy = #{dump_energy,jdbcType=VARCHAR},
+    owner = #{owner,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+    <!-- 查询 -->
+    <select id="queryAllSheet2" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from bus_sheet2
+        <where>
+            <if test="id!=null and id!=''">
+                and id like concat("%",#{id},"%")
+            </if>
+            <if test="dsnum!=null and dsnum!=''">
+                and dsnum like concat("%",#{dsnum},"%")
+            </if>
+            <if test="pressure!=null and pressure!=''">
+                and pressure like concat("%",#{pressure},"%")
+            </if>
+            <if test="rssi!=null and rssi!=''">
+                and rssi like concat("%",#{rssi},"%")
+            </if>
+            <if test="eventid!=null">
+                and eventid=#{eventid}
+            </if>
+        </where>
+    </select>
+</mapper>
